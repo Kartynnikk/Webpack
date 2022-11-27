@@ -1,0 +1,83 @@
+@mixin position($display, $space) {
+    display: $display;
+    justify-content: $space;
+}
+
+$font-s:18px;
+$font-w:bold;
+#conteiner {
+    @include position(flex, space-between);
+    flex-direction: row;
+    .car {
+        margin-top: -332px;
+    }
+}
+
+.nav-tabs {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.nav-link {
+    width: 150px;
+    height: 50px;
+    @include position(flex, space-around);
+    margin-left: 20px;
+}
+
+.fa {
+    padding-top: 3px;
+}
+
+.tab-content {
+    display: inline-block;
+}
+
+.tab-pane {
+    width: 1000px;
+    margin-left: -1200px;
+    margin-top: 20px;
+}
+
+.conteiner_headers {
+    @include position(flex, space-between);
+    flex-direction: row;
+    width: 590px;
+}
+
+.header,
+label {
+    font-size: $font-s;
+    font-weight: $font-w;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.btn-group {
+    width: 200px;
+    margin-left: 825px;
+    margin-top: 20px;
+    .btn {
+        border: none;
+    }
+}
+
+.hotel {
+    margin-top: -330px;
+}
+
+.btn-secondary {
+    width: 1000px;
+    border: 2px solid rgb(233, 232, 232);
+    background-color: white;
+    color: rgba(0, 0, 0, 0.518);
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 20px;
+    height: 40px;
+    i {
+        color: black;
+    }
+}
