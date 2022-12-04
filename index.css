@@ -3,9 +3,6 @@
   justify-content: space-between;
   flex-direction: row;
 }
-#conteiner .car {
-  margin-top: -420px;
-}
 
 .nav-tabs {
   display: inline-block;
@@ -34,13 +31,6 @@
   margin-top: 20px;
 }
 
-.conteiner_headers {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  width: 590px;
-}
-
 .header,
 label {
   font-size: 18px;
@@ -60,10 +50,6 @@ label {
   border: none;
 }
 
-.hotel {
-  margin-top: -330px;
-}
-
 .btn-secondary {
   width: 1000px;
   border: 2px solid rgb(233, 232, 232);
@@ -76,4 +62,35 @@ label {
 }
 .btn-secondary i {
   color: black;
-}/*# sourceMappingURL=webpack.css.map */
+}
+
+#date-input {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 990px;
+}
+
+#form-flight-startdate,
+#form-flight-enddate,
+#form-hotel-startdate,
+#form-hotel-enddate,
+#form-car-startdate,
+#form-car-enddate {
+  width: 500px;
+}
+
+#hotel {
+  margin-left: -1200px;
+}
+
+#button-hotel-stars,
+#button-city-menu,
+#button-country-menu,
+#button-car-city-menu,
+#button-car-country-menu,
+#button-hotel-city-menu,
+#button-hotel-country-menu {
+  width: 1010px;
+  margin-left: -10px;
+}/*# sourceMappingURL=index.css.map */
