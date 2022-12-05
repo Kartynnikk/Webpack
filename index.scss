@@ -8,9 +8,6 @@ $font-w:bold;
 #conteiner {
     @include position(flex, space-between);
     flex-direction: row;
-    .car {
-        margin-top: -420px;
-    }
 }
 
 .nav-tabs {
@@ -39,12 +36,6 @@ $font-w:bold;
     margin-top: 20px;
 }
 
-.conteiner_headers {
-    @include position(flex, space-between);
-    flex-direction: row;
-    width: 590px;
-}
-
 .header,
 label {
     font-size: $font-s;
@@ -64,10 +55,6 @@ label {
     }
 }
 
-.hotel {
-    margin-top: -330px;
-}
-
 .btn-secondary {
     width: 1000px;
     border: 2px solid rgb(233, 232, 232);
@@ -80,4 +67,34 @@ label {
     i {
         color: black;
     }
+}
+
+#date-input {
+    @include position(flex, space-between);
+    flex-direction: row;
+    width: 990px;
+}
+
+#form-flight-startdate,
+#form-flight-enddate,
+#form-hotel-startdate,
+#form-hotel-enddate,
+#form-car-startdate,
+#form-car-enddate {
+    width: 500px;
+}
+
+#hotel {
+    margin-left: -1200px;
+}
+
+#button-hotel-stars,
+#button-city-menu,
+#button-country-menu,
+#button-car-city-menu,
+#button-car-country-menu,
+#button-hotel-city-menu,
+#button-hotel-country-menu {
+    width: 1010px;
+    margin-left: -10px;
 }
