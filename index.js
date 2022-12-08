@@ -33,19 +33,11 @@ const economy = document.getElementById("economy");
 
 const buttonCarType = document.getElementById("button-car-type");
 
-type.forEach((tp) => {
-  tp.addEventListener("click", () => {
-    const type = tp.getAttribute("id");
-    buttonCarType.innerHTML = tp.innerHTML;
-  });
-});
+const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
 
-stars.forEach((star) => {
-  star.addEventListener("click", () => {
-    const startAmount = star.getAttribute("value");
-    buttonHotelStars.innerHTML = star.innerHTML;
-  });
-});
+const arrFlight = [];
+const arrHotel = [];
+const arrCar = [];
 
 const fetchRequestCountry = () => {
   const url = "https://namaztimes.kz/ru/api/country?type=json";
@@ -145,16 +137,42 @@ const getCityCar = (data) => {
 };
 
 flightSearchButton.addEventListener("click", () => {
+  const flightData = {
+    flightStartDate: "",
+    flightEndDate: "",
+    flightFrom: "",
+    flightTo: "",
+  };
+
   const flightStartDate = new Date(inputFlightStartDate.value);
+  const flightStartDateInForm = flightStartDate.toLocaleDateString("en-US", options);
+
+  flightData.flightStartDate = flightStartDateInForm;
+
   currentDate.getTime() <= flightStartDate.getTime()
     ? console.log("Correct date")
     : console.log("Please write correct date");
+
   const flightEndDate = new Date(inputFlightEndDate.value);
+  const flightEndDateInForm = flightEndDate.toLocaleDateString("en-US", options);
+
+  flightData.flightEndDate = flightEndDateInForm;
+
   flightEndDate.getTime() >= currentDate.getTime()
     ? console.log("Correct date")
     : console.log("Please write correct date");
+
+  flightData.flightFrom = inputFrom.value;
+  flightData.flightTo = inputTo.value;
+
+  console.log(flightData);
+
   inputFrom.value;
   inputTo.value;
+
+  arrFlight.push(flightData);
+
+  localStorage.setItem("historyDataFlight", JSON.stringify(arrFlight));
 
   if (flightStartDate && flightEndDate && inputFrom && inputTo) {
     hotelSearchButton.disabled = false;
@@ -169,17 +187,50 @@ flightClearButton.addEventListener("click", () => {
 });
 
 hotelSearchButton.addEventListener("click", () => {
+  const hotelData = {
+    hotelStartDate: "",
+    hotelEndDate: "",
+    starsAmount: "",
+    hotelCountry: "",
+    hotelCity: "",
+  };
+
+  stars.forEach((star) => {
+    star.addEventListener("click", () => {
+      const startAmount = star.getAttribute("value");
+      hotelData.starsAmount = startAmount;
+      buttonHotelStars.innerHTML = star.innerHTML;
+    });
+  });
+
   const hotelStartDate = new Date(inputHotelStartDate.value);
+  const hotelStartDateInForm = hotelStartDate.toLocaleDateString("en-US", options);
+
+  hotelData.hotelStartDate = hotelStartDateInForm;
+
   currentDate.getTime() <= hotelStartDate.getTime()
     ? console.log("Correct date")
     : console.log("Please write correct date");
+
   const hotelEndDate = new Date(inputHotelEndDate.value);
+  const hotelEndDateInForm = hotelEndDate.toLocaleDateString("en-US", options);
+
+  hotelData.hotelEndDate = hotelEndDateInForm;
+
   hotelEndDate.getTime() >= currentDate.getTime()
     ? console.log("Correct date")
     : console.log("Please write correct date");
+
   buttonHotelStars.innerHTML;
   buttonHotelCountryMenu.innerHTML;
   buttonHotelCityMenu.innerHTML;
+
+  hotelData.hotelCountry = buttonHotelCountryMenu.innerHTML;
+  hotelData.hotelCity = buttonHotelCityMenu.innerHTML;
+
+  arrHotel.push(hotelData);
+
+  localStorage.setItem("historyDataHotel", JSON.stringify(arrHotel));
 
   if (hotelStartDate && hotelEndDate && buttonHotelStars && buttonHotelCountryMenu && buttonHotelCityMenu) {
     hotelSearchButton.disabled = false;
@@ -195,17 +246,52 @@ hotelClearButton.addEventListener("click", () => {
 });
 
 carSearchButton.addEventListener("click", () => {
+  const carData = {
+    carStartDate: "",
+    carEndDate: "",
+    carType: "",
+    carCountry: "",
+    carCity: "",
+  };
+
+  type.forEach((tp) => {
+    tp.addEventListener("click", () => {
+      const type = tp.getAttribute("id");
+      carData.carType = type;
+      buttonCarType.innerHTML = tp.innerHTML;
+    });
+  });
+
   const carStartDate = new Date(inputCarStartDate.value);
+  const carStartDateInForm = carStartDate.toLocaleDateString("en-US", options);
+
+  carData.carStartDate = carStartDateInForm;
+
   currentDate.getTime() <= carStartDate.getTime()
     ? console.log("Correct date")
     : console.log("Please write correct date");
+
   const carEndDate = new Date(inputCarEndDate.value);
+  const carEndDateInForm = carEndDate.toLocaleDateString("en-US", options);
+
+  carData.carEndDate = carEndDateInForm;
+
   carEndDate.getTime() >= currentDate.getTime()
     ? console.log("Correct date")
     : console.log("Please write correct date");
+
   buttonCarType.innerHTML;
   buttonCarCountryMenu.innerHTML;
   buttonCarCityMenu.innerHTML;
+
+  carData.carCountry = buttonCarCountryMenu.innerHTML;
+  carData.carCity = buttonCarCityMenu.innerHTML;
+
+  arrCar.push(carData);
+
+  localStorage.setItem("historyDataCar", JSON.stringify(arrCar));
+
+  // localStorage.setItem("carData", JSON.stringify(carData));
 
   if (carStartDate && carEndDate && buttonCarType && buttonCarCountryMenu && buttonCarCityMenu) {
     carSearchButton.disabled = false;
@@ -219,3 +305,11 @@ carClearButton.addEventListener("click", () => {
   buttonCarCountryMenu.innerHTML = "";
   buttonCarCityMenu.innerHTML = "";
 });
+
+// localStorage.getItem(JSON.stringify(hotelData));
+// localStorage.setItem("hotelData", JSON.stringify(hotelData));
+// const length = 20;
+
+// const arr = Array(length).fill(carData);
+// // arr.fill(carData, flightData, hotelData);
+// console.log(arr);

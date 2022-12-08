@@ -98,3 +98,44 @@ label {
     width: 1010px;
     margin-left: -10px;
 }
+
+.header-history{
+  font-size: var(--bs-body-font-size);
+  font-family: var(--bs-body-font-family);
+  margin-top: 20px;
+  margin-left: 20px;
+} 
+
+.conteiner-history{
+  padding-left: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  text-align: start;
+  cursor: text;
+  width: 810px;
+  height: 35px;
+  border: 1px solid rgba(80, 80, 80, 0.546);
+  border-radius: 5px;
+  @include position(flex, space-between);
+  flex-direction: row;
+  padding-right: 10px;
+  padding-top: 8px;
+  .text{
+    width: 700px;
+  }
+  .cross{
+    cursor: pointer;
+  }
+}
+
+.cross{
+  width: 1em;
+  height: 1em;
+  background-color: rgba(99, 99, 254, 0.842);
+  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+
+.link-history{
+  margin-left: 1020px;
+  margin-top: 20px;
+}
